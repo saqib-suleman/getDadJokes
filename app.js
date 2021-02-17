@@ -10,9 +10,14 @@ const addNewJoke = async () => {
 
 
 const getDadJokes = async () => {
-    const config = { headers: { Accept: 'application/json' } }
-    const res = await axios.get('https://icanhazdadjoke.com/', config)
-    return res.data.joke;
+    try {
+        const config = { headers: { Accept: 'application/json' } }
+        const res = await axios.get('https://icanhazdadjoke.com/', config)
+        return res.data.joke;
+    } catch (e) {
+        return "Couldn't load jokes!"
+    }
+
 }
 
 button.addEventListener('click', addNewJoke)
